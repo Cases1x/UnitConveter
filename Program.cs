@@ -4,6 +4,9 @@
     {
         static void Main(string[] args)
         {
+            Header();
+            Welcome();
+
 
             var foot = 12.00;
             var inch = 12.00;
@@ -13,12 +16,25 @@
             
 
 
-            Console.WriteLine($"{foot} ft = {FootToInches(foot):N2} in" );
             Console.WriteLine($"{inch} in = {InchesToFoot(inch):N2} ft" );
+            Console.WriteLine($"{foot} ft = {FootToInches(foot):N2} in" );
             Console.WriteLine($"{foot} ft = {FootToYard(foot):N2} yd");
             Console.WriteLine($"{inch} in = {InchToCM(inch):N2} cm");
             Console.WriteLine($"{yard} yd = {YardToFoot(yard):N2} ft");
             Console.WriteLine($"{cm} cm = {CMToInch(cm):N2} in");
+        }
+
+        private static void Welcome()
+        {
+            Console.WriteLine("1. Foot");
+            Console.WriteLine("2. Inch");
+            Console.WriteLine("3. Yard");
+            Console.WriteLine("4. CM");
+        }
+
+        private static void Header()
+        {
+            Console.WriteLine("=============================== Unit Converter ===============================");
         }
 
         private static double CMToInch(double cm)
