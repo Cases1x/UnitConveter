@@ -4,79 +4,179 @@
     {
         static void Main(string[] args)
         {
-            Header();
-            Welcome();
-
-
-            var foot = 12.00;
-            var inch = 12.00;
-            var yard = 12.00;
-            var cm = 12.00;
-                
-            
-
-
-            Console.WriteLine($"{inch} in = {InchesToFoot(inch):N2} ft" );
-            Console.WriteLine($"{foot} ft = {FootToInches(foot):N2} in" );
-            Console.WriteLine($"{foot} ft = {FootToYard(foot):N2} yd");
-            Console.WriteLine($"{inch} in = {InchToCM(inch):N2} cm");
-            Console.WriteLine($"{yard} yd = {YardToFoot(yard):N2} ft");
-            Console.WriteLine($"{cm} cm = {CMToInch(cm):N2} in");
+            PrintHeader();
+            PrintUnits();
+        }
+        private static void PrintUnits()
+        {
+            Console.WriteLine("1. Length");
+            Console.WriteLine("2. Temperature");
+            Console.WriteLine("3. Area");
+            Console.WriteLine("4. Volume");
+            Console.WriteLine("5. Weight");
+            Console.WriteLine("6. Time");
+            Console.WriteLine("7. Quit");  
+            ChooseUnit();
         }
 
-        private static void Welcome()
+        private static void ChooseUnit()
+        {
+            var option = GetOption();
+            
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Choose a Unit to Convert From");
+                    PrintLenghts();
+                    OriginUnit();
+                    break;
+                case 2:
+                    Console.WriteLine("Choose a Unit to Convert From");
+                    TemperatureUnits();
+                    break;
+                case 3:
+                    Console.WriteLine("Choose a Unit to Convert From");
+                    AreaUnits();
+                    break;
+                case 4:
+                    Console.WriteLine("Choose a Unit to Convert From");
+                    VolumeUnits();
+                    break;
+                case 5:
+                    Console.WriteLine("Choose a Unit to Convert From");
+                    WeightUnits();
+                    break;
+                case 6:
+                    Console.WriteLine("Choose a Unit to Convert From");
+                    TimeUnits();
+                    break;
+                case 7:
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input Try Again");
+                    PrintUnits();
+                    break;
+            }
+        }
+
+       
+        private static void PrintLenghts()
         {
             Console.WriteLine("1. Foot");
             Console.WriteLine("2. Inch");
             Console.WriteLine("3. Yard");
-            Console.WriteLine("4. CM");
+            Console.WriteLine("4. Meter");
+            Console.WriteLine("5. Mile");
+            Console.WriteLine("6. Kilometer");
+            Console.WriteLine("7. Centimeter");
+            Console.WriteLine("8. Milimeter");
         }
 
-        private static void Header()
+        private static void OriginUnit()
+        {
+            Converter converter = new Converter();
+             var option = GetOption();
+            
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Input the value you want to convert: ");
+                    var value = Convert.ToInt32(Console.ReadLine());
+                    PrintLenghts();
+                    System.Console.WriteLine("Choose the Unit to Convert to: ");
+                    double convertTo = GetOption();
+                    System.Console.WriteLine(convertTo);
+                    switch (convertTo)
+                    {
+                        case 1:
+                            break;
+                        case 2:
+                            double converted = converter.FootToInch(value); 
+                            Console.WriteLine($"{value} ft is = {converted} in");
+                            Console.WriteLine("Press any key to convert again: ");
+                            Console.ReadKey(true);
+                            PrintHeader();
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                    
+                    break;
+                case 5:
+                    
+                    break;
+                case 6:
+                
+                    break;
+                case 7:
+
+                    break;
+                case 8:
+
+                    break;
+                case 9:
+                
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input Try Again");
+                    PrintUnits();
+                    break;
+            }
+        }
+
+
+        
+
+
+        private static int GetOption()
+        {
+            Console.WriteLine("Input your option here: ");
+            var val = Console.ReadLine();
+            var option = Convert.ToInt32(val);
+            //Console.Clear();
+            return option;
+        }
+
+
+        private static void PrintHeader()
         {
             Console.WriteLine("=============================== Unit Converter ===============================");
         }
 
-        private static double CMToInch(double cm)
+
+
+        private static void TimeUnits()
         {
-            var inch = cm / 2.54;
-            return inch;
+            throw new NotImplementedException();
         }
 
-        private static double YardToFoot(double yard)
+        private static void WeightUnits()
         {
-            var foot = yard * 3;
-            return foot;
+            throw new NotImplementedException();
         }
 
-        private static double InchToCM(double inch)
+        private static void VolumeUnits()
         {
-            var centimeter = inch * 2.54;
-            return centimeter;
+            throw new NotImplementedException();
         }
 
-        private static double FootToYard(double foot)
+        private static void AreaUnits()
         {
-            var yard = foot / 3;
-            return yard;
+            throw new NotImplementedException();
         }
 
-        private static double InchesToFoot(double inches)
+        private static void TemperatureUnits()
         {
-            var foot = inches / 12;
-            return foot;
-        }
-
-        private static double FootToInches(double foot)
-        {
-            var inches = foot * 12;
-            return inches;
-        }
+            throw new NotImplementedException();
+        }        
     }
 }
-
-
-// 1 ft = 12 in
-// 3 ft = 1 yd
-// 1 in = 2.54 cm
-// 1km = 1000m
