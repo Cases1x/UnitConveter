@@ -10,27 +10,29 @@
             // I can use parameters dito, parang ang nasa parameters whether kung ano yung unang unit and kung saan i cconvert
             
             Converter converter = new Converter();
-            
-            PrintLengths();    
-            var source = ChooseSource();
-            var sourceunit = ReturnUnit(source);
-            var target = ChooseTarget();
-            var targetunit = ReturnUnit(target);
+            int source, target;
+            string sourceunit, targetunit;
 
+
+
+
+            PrintLengths();    
+            source = ChooseUnit(1);
+            sourceunit = ReturnUnit(source);
+            target = ChooseUnit(2);
+            targetunit = ReturnUnit(target);
             Console.WriteLine($"Converting from {sourceunit} to {targetunit}");
             
 
 
-
-
             while(true)
             {
-                Console.WriteLine("Enter the value you want to convert (q to quit): "); 
+                Console.WriteLine("Input 'Q' to Quit");
+                Console.WriteLine("Input 'E' to change units");
+                Console.WriteLine("Enter the value you want to convert: "); 
                 var input = Console.ReadLine();
-                if(input == "q")
-                {
-                    break;
-                }if(input == "w")
+                if(input == "Q") break;
+                if(input == "E")
                 {
                     while (input != "3")
                     {
@@ -39,54 +41,79 @@
                         Console.WriteLine("3. Done");
                         Console.WriteLine("Enter your option: ");
                         input = Console.ReadLine();
-                        if(input == "1")
+                        if(CheckInt(input))
+                        {
+                        var option = Convert.ToInt32(input);
+                        if(option == 1)
                         {
                             PrintLengths();
-                            source = ChooseSource();
+                            source = ChooseUnit(option);
+                            if(source == 9) break;
                             sourceunit = ReturnUnit(source);
             
-                        }if (input == "2")
+                        }if (option == 2)
                         {
                             PrintLengths();
-                            target = ChooseTarget();
+                            target = ChooseUnit(option);
+                            if(source == 9) break;
                             targetunit = ReturnUnit(target);
                         }
+                        }else
+                        {
+                            Console.WriteLine("Invalid Input, Please Input a Number");
+                        }
+                        
                     }
-                   Console.WriteLine($"Converting from {sourceunit} to {targetunit}"); 
-                }else
+                   Console.WriteLine($"Converting from {sourceunit} to {targetunit}");
+                }if(CheckInt(input))
                 {
                 double value = Convert.ToDouble(input);
                 double converted = converter.convert(value, source, target);
                 Console.WriteLine($"{value} {sourceunit} is equal to {converted} {targetunit}");
+                }else
+                {
+                    Console.WriteLine("Invalid Input Try Again!!!");
+                    continue;
                 }
-                
+            }            
+        }
+
+        private static bool CheckInt(string input)
+        {
+            int temp;
+            return int.TryParse(input, out temp);
+        }
+
+        private static int ChooseUnit(int option)
+        {
+            while(true)
+            {
+                if(option == 1)
+                {   
+                    Console.WriteLine("Choose a unit to convert from: ");
+                }if(option == 2)
+                {
+                    Console.WriteLine("Choose a unit to convert to: ");
+                }
+                    var input = Console.ReadLine();
+                if(CheckInt(input))
+                {
+                    var target = Convert.ToInt32(input);
+                    return target;
+                }if(input == "Q")
+                {
+                    return 9;
+                }
+                else
+                {
+                Console.WriteLine("Invalid Input. Try Again");
+                }
             }
-            
-            
-            
            
             
-           
-            
-
-            
-
-            
         }
 
-        private static int ChooseTarget()
-        {
-            Console.WriteLine("Choose a unit to convert to: ");
-            var target = Convert.ToInt32(Console.ReadLine());
-            return target;
-        }
-
-        private static int ChooseSource()
-        {
-            Console.WriteLine("Choose a unit to convert from: ");
-            var source = Convert.ToInt32(Console.ReadLine());
-            return source;
-        }
+        
 
         private static string ReturnUnit(int unit)
         {
@@ -123,6 +150,7 @@
             Console.WriteLine("6. Kilometer");
             Console.WriteLine("7. Centimeter");
             Console.WriteLine("8. Milimeter");
+            Console.WriteLine("Q. Quit");
         }
     }
 }
