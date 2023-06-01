@@ -6,7 +6,7 @@ namespace UnitConverter
         {
             switch (source)
             {
-                case 1:
+                case 1: // Foot
                     switch (target)
                     {
                         case 1:
@@ -25,12 +25,12 @@ namespace UnitConverter
                         case 7:
                             return FootToCentimeter(value);
                         case 8:
-                            return FootToCentimeter(value);
+                            return FootToMillimeter(value);
                         default:
                             break;
                     }
                     break;
-                case 2:
+                case 2: // Inches
                     switch (target)
                     {
                         case 1:
@@ -48,145 +48,145 @@ namespace UnitConverter
                         case 7:
                             return InchToCentimeter(value);
                         case 8:
-                            return InchToCentimeter(value);
+                            return InchToMillimeter(value);
                         default:
                             break;
                     }
                     break;
-                case 3:
+                case 3: // Yard
                     switch (target)
                     {
                         case 1:
-                            break;
+                            return YardToFoot(value);
                         case 2:
-                            break;
+                            return YardToInch(value);
                         case 3:
-                            break;
+                            return value;
                         case 4:
-                            break;
+                            return YardToMeter(value);
                         case 5:
-                            break;
+                            return YardToMile(value);
                         case 6:
-                            break;
+                            return YardToKilometer(value);
                         case 7:
-                            break;
+                            return YardToCentimeter(value);
                         case 8:
-                            break;
+                            return YardToMillimeter(value);
                         default:
                             break;
                     }
                     break;
-                case 4:
+                case 4: // Meter
                     switch (target)
                     {
                         case 1:
-                            break;
+                            return MeterToFoot(value);
                         case 2:
-                            break;
+                            return MeterToInch(value);
                         case 3:
-                            break;
+                            return MeterToYard(value);
                         case 4:
-                            break;
+                            return value;
                         case 5:
-                            break;
+                            return MeterToMile(value);
                         case 6:
-                            break;
+                            return MeterToKilometer(value);
                         case 7:
-                            break;
+                            return MeterToCentimeter(value);
                         case 8:
-                            break;
+                            return MeterToMillimeter(value);
                         default:
                             break;
                     }
                     break;
-                case 5:
+                case 5: // Mile
                     switch (target)
                     {
                         case 1:
-                            break;
+                            return MileToFoot(value);
                         case 2:
-                            break;
+                            return MileToInch(value);
                         case 3:
-                            break;
+                            return MileToYard(value);
                         case 4:
-                            break;
+                            return MileToMeter(value);
                         case 5:
-                            break;
+                            return value;
                         case 6:
-                            break;
+                            return MileToKilometer(value);
                         case 7:
-                            break;
+                            return MileToCentimeter(value);
                         case 8:
-                            break;
+                            return MileToMillimeter(value);
                         default:
                             break;
                     }
                     break;
-                case 6:
+                case 6: //Kilometer
                     switch (target)
                     {
                         case 1:
-                            break;
+                            return KilometerToFoot(value);
                         case 2:
-                            break;
+                            return KilometerToInch(value);
                         case 3:
-                            break;
+                            return KilometerToYard(value);
                         case 4:
-                            break;
+                            return KilometerToMeter(value);
                         case 5:
-                            break;
+                            return KilometerToMile(value);
                         case 6:
-                            break;
+                            return value;
                         case 7:
-                            break;
+                            return KilometerToCentimeter(value);
                         case 8:
-                            break;
+                            return KilometerToMillimeter(value);
                         default:
                             break;
                     }
                     break;
-                case 7:
+                case 7: //Centimeter
                     switch (target)
                     {
                         case 1:
-                            break;
+                            return CentimeterToFoot(value);
                         case 2:
-                            break;
+                            return CentimeterToInch(value);
                         case 3:
-                            break;
+                            return CentimeterToYard(value);
                         case 4:
-                            break;
+                            return CentimeterToMeter(value);
                         case 5:
-                            break;
+                            return CentimeterToMile(value);
                         case 6:
-                            break;
+                            return CentimeterToKilometer(value);
                         case 7:
-                            break;
+                            return value;
                         case 8:
-                            break;
+                            return CentimeterToMillimeter(value);
                         default:
                             break;
                     }
                     break;
-                case 8:
+                case 8: //Milimeter
                     switch (target)
                     {
                         case 1:
-                            break;
+                            return MilimeterToFoot(value);
                         case 2:
-                            break;
+                            return MilimeterToInch(value);
                         case 3:
-                            break;
+                            return MilimeterToYard(value);
                         case 4:
-                            break;
+                            return MilimeterToMeter(value);
                         case 5:
-                            break;
+                            return MilimeterToMile(value);
                         case 6:
-                            break;
+                            return MilimeterToKilometer(value);
                         case 7:
-                            break;
+                            return MilimeterToCentimeter(value);
                         case 8:
-                            break;
+                            return value;
                         default:
                             break;
                     }
@@ -197,6 +197,215 @@ namespace UnitConverter
             return 0;
         }
 
+        private double KilometerToFoot(double value)
+        {
+            return value * 3281;
+        }
+
+        private double KilometerToInch(double value)
+        {
+            return value * 39370;
+        }
+
+        private double KilometerToYard(double value)
+        {
+            return value * 1094;
+        }
+
+        private double KilometerToMeter(double value)
+        {
+            return value * 1000;
+        }
+
+        private double KilometerToMile(double value)
+        {
+            return value / 1.609;
+        }
+
+        private double KilometerToCentimeter(double value)
+        {
+            return value * 100000;
+        }
+
+        private double KilometerToMillimeter(double value)
+        {
+            return value * 1000000;
+        }
+
+        private double CentimeterToFoot(double value)
+        {
+            return value / 30.48;
+        }
+
+        private double CentimeterToInch(double value)
+        {
+            return value / 2.54;
+        }
+
+        private double CentimeterToYard(double value)
+        {
+            return value / 91.44;
+        }
+
+        private double CentimeterToMeter(double value)
+        {
+            return value / 100;
+        }
+
+        private double CentimeterToMile(double value)
+        {
+            return value / 160900;
+        }
+
+        private double CentimeterToKilometer(double value)
+        {
+            return value / 100000;
+        }
+
+        private double CentimeterToMillimeter(double value)
+        {
+            return value * 10;
+        }
+
+        private double MilimeterToFoot(double value)
+        {
+            return value / 304.8;
+        }
+
+        private double MilimeterToInch(double value)
+        {
+            return value / 25.4;
+        }
+
+        private double MilimeterToYard(double value)
+        {
+            return value / 914.4;
+        }
+
+        private double MilimeterToMeter(double value)
+        {
+            return value / 1000;
+        }
+
+        private double MilimeterToMile(double value)
+        {
+            return value / 1609000;
+        }
+
+        private double MilimeterToKilometer(double value)
+        {
+            return value / 1000000;
+        }
+
+        private double MilimeterToCentimeter(double value)
+        {
+            return value / 10;
+        }
+
+        private double MileToFoot(double value)
+        {
+            return value * 5280;
+        }
+
+        private double MileToInch(double value)
+        {
+            return value * 63360;
+        }
+
+        private double MileToYard(double value)
+        {
+            return value * 1760;
+        }
+
+        private double MileToMeter(double value)
+        {
+            return value * 1609;
+        }
+
+        private double MileToKilometer(double value)
+        {
+            return value * 1.609;
+        }
+
+        private double MileToCentimeter(double value)
+        {
+            return value * 160900;
+        }
+
+        private double MileToMillimeter(double value)
+        {
+            return value * 1609000;
+        }
+
+        private double MeterToFoot(double value)
+        {
+            return value * 3.281;
+        }
+
+        private double MeterToInch(double value)
+        {
+            return value * 39.37;
+        }
+
+        private double MeterToYard(double value)
+        {
+            return value * 1.094;
+        }
+
+        private double MeterToMile(double value)
+        {
+            return value / 1609;
+        }
+
+        private double MeterToKilometer(double value)
+        {
+            return value / 1000;
+        }
+
+        private double MeterToCentimeter(double value)
+        {
+            return value * 100;
+        }
+
+        private double MeterToMillimeter(double value)
+        {
+            return value * 1000;
+        }
+
+        private double YardToFoot(double value)
+        {
+            return value * 3;
+        }
+
+        private double YardToInch(double value)
+        {
+            return value * 36;
+        }
+
+        private double YardToMeter(double value)
+        {
+            return value / 1.094;
+        }
+
+        private double YardToMile(double value)
+        {
+            return value / 1760;
+        }
+
+        private double YardToKilometer(double value)
+        {
+            return value / 1094;
+        }
+
+        private double YardToCentimeter(double value)
+        {
+            return value / 91.44;
+        }
+
+        private double YardToMillimeter(double value)
+        {
+            return value / 914.4;
+        }
 
         public double FootToInch(double foot)
         {
@@ -226,7 +435,7 @@ namespace UnitConverter
             return foot * 30.48;
         }
 
-        public double FootToMilimeter(double foot)
+        public double FootToMillimeter(double foot)
         {
             return foot * 304.8;
         }
@@ -258,7 +467,7 @@ namespace UnitConverter
             return inch * 2.54;
         }
 
-         public double InchToMilimeter(double inch)
+         public double InchToMillimeter(double inch)
         {
             return inch * 25.4;
         }
