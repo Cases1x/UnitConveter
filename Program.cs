@@ -9,24 +9,38 @@
             // then mag cconvert unli until you decide to change whether kung ano cconvert mo, and kung san mo i cconvert. 
             // I can use parameters dito, parang ang nasa parameters whether kung ano yung unang unit and kung saan i cconvert
             
+            Menu();        
+        }
+
+        private static void Menu()
+        {
             Converter converter = new Converter();
-            int source, target;
-            string sourceunit, targetunit;
+            var source = 0; 
+            var target = 0;
+            var sourceunit = "";
+            var targetunit = "";
 
-
-
-
+        while(true)
+        {
             PrintLengths();    
             source = ChooseUnit(1);
+            if(source == 9) break;
             sourceunit = ReturnUnit(source);
             target = ChooseUnit(2);
+            if(target == 9) break;
             targetunit = ReturnUnit(target);
             Console.WriteLine($"Converting from {sourceunit} to {targetunit}");
+                
+            
+            
+            
+
+    
             
 
 
-            while(true)
-            {
+                while(true)
+                {
                 Console.WriteLine("Input 'Q' to Quit");
                 Console.WriteLine("Input 'E' to change units");
                 Console.WriteLine("Enter the value you want to convert: "); 
@@ -65,17 +79,18 @@
                         
                     }
                    Console.WriteLine($"Converting from {sourceunit} to {targetunit}");
-                }if(CheckInt(input))
-                {
-                double value = Convert.ToDouble(input);
-                double converted = converter.convert(value, source, target);
-                Console.WriteLine($"{value} {sourceunit} is equal to {converted} {targetunit}");
-                }else
-                {
-                    Console.WriteLine("Invalid Input Try Again!!!");
-                    continue;
-                }
-            }            
+                    }if(CheckInt(input))
+                    {
+                    double value = Convert.ToDouble(input);
+                    double converted = converter.convert(value, source, target);
+                    Console.WriteLine($"{value} {sourceunit} is equal to {converted} {targetunit}");
+                    }else
+                    {
+                        Console.WriteLine("Invalid Input Try Again!!!");
+                        continue;
+                    }
+                }    
+            }
         }
 
         private static bool CheckInt(string input)
@@ -99,7 +114,10 @@
                 if(CheckInt(input))
                 {
                     var target = Convert.ToInt32(input);
+                    if(target < 9 && target != 0)
                     return target;
+                    Console.WriteLine("Invalid Input. Try Again");
+                    continue;
                 }if(input == "Q")
                 {
                     return 9;
