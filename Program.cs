@@ -81,30 +81,6 @@
                                 Console.ResetColor();
                             }
 
-
-                            //int option;
-                            //if(int.TryParse(input, out option))
-                            //{
-
-                            //    if(option == 1)
-                            //    {
-                            //        PrintLengths();
-                            //        source = ChooseUnit(option);
-                            //        if(source == 9) break;
-                            //        sourceunit = ReturnUnit(source);
-
-                            //    }if (option == 2)
-                            //    {
-                            //        PrintLengths();
-                            //        target = ChooseUnit(option);
-                            //        if(source == 9) break;
-                            //        targetunit = ReturnUnit(target);
-                            //    }
-                            //}else
-                            //{
-                            //    Console.WriteLine("Invalid Input, Please Input a Number");
-                            //}
-
                         }
                         Console.WriteLine($"Converting from {sourceunit} to {targetunit}");
                     }
@@ -157,21 +133,6 @@
                     Console.ResetColor();
                 }
 
-
-                //if(int.TryParse(input, out target))
-                //{
-                //    if(target < 9 && target != 0)
-                //    return target;
-                //    Console.WriteLine("Invalid Input. Try Again");
-                //    continue;
-                //}if(input == "Q")
-                //{
-                //    return 9;
-                //}
-                //else
-                //{
-                //Console.WriteLine("Invalid Input. Try Again");
-                //}
             }
 
 
