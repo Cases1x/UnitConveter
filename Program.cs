@@ -37,7 +37,10 @@
                     Console.WriteLine("Input 'Q' to Quit");
                     Console.WriteLine("Input 'E' to change units");
                     Console.WriteLine("Enter the value you want to convert: "); 
+                    
                     var input = Console.ReadLine();
+                    
+                    
                     if(input == "Q") break;
                     if(input == "E")
                     {
@@ -48,44 +51,83 @@
                             Console.WriteLine("3. Done");
                             Console.WriteLine("Enter your option: ");
                             input = Console.ReadLine();
-                                int option;
-                            if(int.TryParse(input, out option))
+
+                            try
                             {
-                        
-                                if(option == 1)
+                                int option = int.Parse(input);
+                                if (option == 1)
                                 {
                                     PrintLengths();
                                     source = ChooseUnit(option);
-                                    if(source == 9) break;
+                                    if (source == 9) break;
                                     sourceunit = ReturnUnit(source);
-            
-                                }if (option == 2)
+
+                                }
+                                if (option == 2)
                                 {
                                     PrintLengths();
                                     target = ChooseUnit(option);
-                                    if(source == 9) break;
+                                    if (source == 9) break;
                                     targetunit = ReturnUnit(target);
                                 }
-                            }else
-                            {
-                                Console.WriteLine("Invalid Input, Please Input a Number");
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Invalid Input! Try Again \n\n");
+                                Console.ResetColor();
                             }
-                        
+                            catch(FormatException ex)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Invalid Input! Try Again \n\n");
+                                Console.ResetColor();
+                            }
+
+
+                            //int option;
+                            //if(int.TryParse(input, out option))
+                            //{
+
+                            //    if(option == 1)
+                            //    {
+                            //        PrintLengths();
+                            //        source = ChooseUnit(option);
+                            //        if(source == 9) break;
+                            //        sourceunit = ReturnUnit(source);
+
+                            //    }if (option == 2)
+                            //    {
+                            //        PrintLengths();
+                            //        target = ChooseUnit(option);
+                            //        if(source == 9) break;
+                            //        targetunit = ReturnUnit(target);
+                            //    }
+                            //}else
+                            //{
+                            //    Console.WriteLine("Invalid Input, Please Input a Number");
+                            //}
+
                         }
                         Console.WriteLine($"Converting from {sourceunit} to {targetunit}");
                     }
-                        double value;
-                        if(double.TryParse(input, out value ))
-                        { 
-                            double converted = converter.convert(value, source, target);
-                            Console.WriteLine($"{value} {sourceunit} is equal to {converted} {targetunit}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Input Try Again!!!");
-                            continue;
-                        }
-                }    
+                    
+
+                    try
+                    {
+                        double value = double.Parse(input);
+                        double converted = converter.convert(value, source, target);
+                        Console.WriteLine($"{value} {sourceunit} is equal to {converted} {targetunit} \n\n");
+
+                    }
+                    catch (FormatException ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Invalid Input! Try Again \n\n");
+                        Console.ResetColor();
+                    }
+
+
+
+                 
+                }
             }
         }
 
@@ -95,32 +137,44 @@
         {
             while(true)
             {
-                if(option == 1)
-                {   
-                    Console.WriteLine("Choose a unit to convert from: ");
-                }if(option == 2)
-                {
-                    Console.WriteLine("Choose a unit to convert to: ");
-                }
+                if(option == 1)Console.WriteLine("Choose a unit to convert from: ");
+                if(option == 2)Console.WriteLine("Choose a unit to convert to: ");
+                
                     var input = Console.ReadLine();
-                    int target;
-                if(int.TryParse(input, out target))
+                    if (input == "Q") return 9;
+                try
                 {
-                    if(target < 9 && target != 0)
-                    return target;
-                    Console.WriteLine("Invalid Input. Try Again");
+                    int target = int.Parse(input);
+                    if (target < 9 && target != 0) return target;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid Input! Try Again \n\n");
+                    Console.ResetColor();
                     continue;
-                }if(input == "Q")
+                }catch(FormatException ex) 
                 {
-                    return 9;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid Input! Try Again \n\n");
+                    Console.ResetColor();
                 }
-                else
-                {
-                Console.WriteLine("Invalid Input. Try Again");
-                }
+
+
+                //if(int.TryParse(input, out target))
+                //{
+                //    if(target < 9 && target != 0)
+                //    return target;
+                //    Console.WriteLine("Invalid Input. Try Again");
+                //    continue;
+                //}if(input == "Q")
+                //{
+                //    return 9;
+                //}
+                //else
+                //{
+                //Console.WriteLine("Invalid Input. Try Again");
+                //}
             }
-           
-            
+
+
         }
 
         
